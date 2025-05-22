@@ -1,32 +1,36 @@
-// frontend/src/components/LoginForm.js
+// frontend/src/components/AuthForm.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
-import './LoginForm.css';
+import { FaUser, FaLock } from 'react-icons/fa';
+import './AuthForm.css';
 
-const LoginForm = () => {
+const AuthForm = ({ isLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useContext(AuthContext);
+  const { login, register } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login({ username, password });
+      if (isLogin) {
+        await login({ username, password });
+      } else {
+        await register({ username, password });
+      }
       navigate('/');
     } catch (error) {
-      console.error("Login failed:", error);
-      alert('Login failed: ' + error.message);
+      console.error("Authentication failed:", error);
+      alert('Authentication failed: ' + error.message);
     }
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h2>Warehouse Login</h2>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
+    <form onSubmit={handleSubmit} className="auth-form">
+      <div className="form-group">
+        <div className="input-with-icon">
+          <FaUser className="icon" />
           <input
             type="text"
             id="username"
@@ -36,8 +40,10 @@ const LoginForm = () => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+      </div>
+      <div className="form-group">
+        <div className="input-with-icon">
+          <FaLock className="icon" />
           <input
             type="password"
             id="password"
@@ -47,10 +53,10 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button type="submit" className="login-btn">Login</button>
-      </form>
-    </div>
+      </div>
+      <button type="submit" className="auth-btn">{isLogin ? "Login" : "Register"}</button>
+    </form>
   );
 };
 
-export default LoginForm;
+export default AuthForm;

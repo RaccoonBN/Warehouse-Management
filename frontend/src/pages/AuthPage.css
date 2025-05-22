@@ -1,0 +1,84 @@
+/* frontend/src/pages/AuthPage.css */
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #7986cb 0%, #9fa8da 100%);
+    font-family: 'Lexend Deca', sans-serif;
+    color: #34495e;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .auth-illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .auth-illustration img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .auth-content {
+    max-width: 450px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    text-align: center;
+  }
+  
+  .auth-content h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #34495e;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-content p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #777;
+  }
+  
+  .auth-content .toggle-form {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .auth-content .toggle-form button {
+    background: none;
+    border: none;
+    color: #4a90e2;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .auth-content .toggle-form button:hover {
+    color: #63b8ff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .auth-content {
+      padding: 30px;
+    }
+  
+    .auth-content h1 {
+      font-size: 2em;
+    }
+  
+    .auth-content p {
+      font-size: 1em;
+    }
+  }
