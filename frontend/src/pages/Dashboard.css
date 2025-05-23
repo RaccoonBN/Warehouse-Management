@@ -1,0 +1,101 @@
+/* frontend/src/pages/Dashboard.css */
+
+.dashboard {
+  display: flex;
+}
+
+.dashboard-content {
+  flex: 1;
+  margin-left: 250px; /* Same as sidebar width */
+  background-color: #f0f4f8; /* Light background */
+  min-height: 100vh;
+}
+
+.content {
+  padding: 30px;
+}
+
+.content h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #34495e;
+}
+
+/* Stats section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+}
+
+.stat-card .icon {
+  font-size: 2em;
+  color: #4a90e2;
+  margin-bottom: 10px;
+}
+
+.stat-card .stat-value {
+  font-size: 2em;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.stat-card .stat-label {
+  font-size: 1em;
+  color: #777;
+}
+
+/* Charts section */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.chart-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 45%; /* Two charts per row */
+  margin-bottom: 30px;
+}
+
+.chart-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #34495e;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-card {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .charts {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-card {
+    width: 90%;
+  }
+}

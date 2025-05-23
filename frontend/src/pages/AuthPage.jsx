@@ -10,26 +10,35 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   };
 
+  const pageTitle = isLogin ? "Welcome back" : "Create an Account";
+  const pageSubtitle = isLogin ? (
+    <>Login to manage your warehouse efficiently.</>
+  ) : (
+    <>Register to start managing your warehouse.</>
+  );
+
   return (
     <div className="auth-page">
-      <div className="auth-illustration">
-        <img src="../assets/login.png" alt="Authentication Illustration" />
-      </div>
-      <div className="auth-content">
-        <h1>{isLogin ? "Hello, Welcome Back!" : "Create an Account"}</h1>
-        <p>{isLogin ? "Login to manage your warehouse efficiently" : "Register to start managing your warehouse"}</p>
-        <AuthForm isLogin={isLogin} />
-        <p className="toggle-form">
-          {isLogin ? (
-            <>
-              Don't have an account? <button onClick={toggleForm}>Click here to register</button>
-            </>
-          ) : (
-            <>
-              Already have an account? <button onClick={toggleForm}>Click here to login</button>
-            </>
-          )}
-        </p>
+      <div className="auth-card"> {/* Main container for the split layout */}
+        <div className="auth-illustration">
+          <img src={isLogin ? "../assets/login.png" : "../assets/login.png"} alt="Authentication Illustration" />
+        </div>
+        <div className="auth-content">
+          <h1>{pageTitle}</h1>
+          <p className="auth-subtitle">{pageSubtitle}</p> {/* Added subtitle class */}
+          <AuthForm isLogin={isLogin} />
+          <p className="toggle-form-text">
+            {isLogin ? (
+              <>
+                Don't have an account? <button onClick={toggleForm} className="toggle-btn">Click here</button>
+              </>
+            ) : (
+              <>
+                Already have an account? <button onClick={toggleForm} className="toggle-btn">Click here</button>
+              </>
+            )}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -1,109 +1,238 @@
 /* frontend/src/components/AuthForm.css */
 
-/* Import Lexend Deca font from Google Fonts */
+/* Important: The @import rule for Google Fonts should be at the very top of your CSS file.
+   If you have a global App.css, it's better to put it there to avoid redundant imports.
+   Assuming it's only for this form, keep it here. */
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap');
 
-/* The main auth form styling */
+/* The main auth form styling - now very lightweight as AuthPage will handle the outer container */
 .auth-form {
-  width: 90%;
-  max-width: 400px;
-  padding: 35px;
-  border-radius: 14px;
+  width: 100%; /* Take full width of its parent (AuthContent) */
+  padding: 0; /* Remove padding from here, AuthContent handles it */
+  margin: 0; /* Remove margin from here */
+  border: none;
+  background: transparent; /* Make background transparent */
+  box-shadow: none; /* Remove shadow, AuthContent handles it */
   font-family: 'Lexend Deca', sans-serif;
   color: #34495e;
   text-align: left;
-  margin: 30px auto;
+  box-sizing: border-box;
 }
 
-.auth-form h2 {
-  font-size: 2em;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #34495e;
-  text-align: center;
-}
+/* Form Headings (if used inside form - removed from AuthForm.js to AuthPage.js) */
+/* .auth-form h2 { ... } */
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 20px; /* Consistent spacing between input fields */
   position: relative;
 }
 
 /* Style for the input-with-icon container */
-.form-group .input-with-icon {
+.input-with-icon {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 /* Style for the icon inside the input */
-.form-group .input-with-icon .icon {
+.input-with-icon .icon {
   position: absolute;
-  left: 15px;
+  left: 15px; /* Position inside input */
   top: 50%;
   transform: translateY(-50%);
-  color: #bbb;
-  font-size: 1.2em;
+  color: #c9c9c9; /* Soft grey, matching placeholder text */
+  font-size: 1.1em; /* Subtle size */
   pointer-events: none;
   transition: color 0.3s ease;
 }
 
-.form-group input {
+.input-with-icon input {
   width: 100%;
-  padding: 14px 15px;
-  padding-left: 45px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 12px 15px; /* Vertical padding */
+  padding-left: 45px; /* Space for the icon */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 8px; /* Rounded corners */
   font-size: 1em;
-  transition: all 0.3s ease;
+  color: #34495e; /* Darker text */
   outline: none;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #fcfcfc; /* Very light background */
+  transition: all 0.2s ease-in-out;
 }
 
-.form-group input:focus {
-  border-color: #63b8ff;
-  box-shadow: 0 3px 10px rgba(74, 144, 226, 0.3);
+.input-with-icon input::placeholder {
+  color: #b0b0b0; /* Placeholder color */
+  font-weight: 300; /* Lighter font-weight for placeholder */
+}
+
+.input-with-icon input:focus {
+  border-color: #63b8ff; /* Highlight border on focus */
+  box-shadow: 0 0 0 2px rgba(99, 184, 255, 0.2); /* Subtle blue glow on focus */
+  background-color: #ffffff; /* Slightly brighter on focus */
 }
 
 /* Highlight the icon when the input is focused */
-.form-group input:focus + .icon {
-  color: #4a90e2;
+.input-with-icon input:focus + .icon {
+  color: #4a90e2; /* Icon color on focus */
 }
 
+/* Login/Remember Me Footer */
+.auth-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -10px; /* Pull it slightly up towards the last input */
+  margin-bottom: 25px; /* Spacing before button */
+  font-size: 0.9em;
+  color: #888; /* Soft grey text */
+}
+
+/* Custom checkbox styling (to mimic the design) */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 25px; /* Space for the custom checkbox */
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ddd;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #4a90e2; /* Blue when checked */
+  border-color: #4a90e2;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.forgot-password-link {
+  color: #4a90e2; /* Blue link */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.forgot-password-link:hover {
+  color: #63b8ff; /* Lighter blue on hover */
+}
+
+/* Style cho password toggle icon */
+.password-toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    font-size: 1.2em;
+}
+
+/* Style cho select */
+select.form-control {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+select.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Auth Button */
 .auth-btn {
   width: 100%;
-  padding: 16px;
+  padding: 15px;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(to right, #4a90e2, #63b8ff);
+  border-radius: 8px; /* Slightly less rounded than image, but modern */
+  background: linear-gradient(to right, #6a5acd, #845ef7); /* Deeper, more vibrant purple gradient */
   color: white;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.5);
-  transition: all 0.3s ease;
   letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(106, 90, 205, 0.4); /* Shadow matching gradient */
+  transition: all 0.2s ease-in-out;
 }
 
-/* Removing hover effect */
+.auth-btn:active { /* Optional: effect when button is pressed */
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.3);
+}
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .auth-form {
-    width: 95%;
-    padding: 30px;
+    padding: 25px; /* Reduce padding on small screens */
   }
 
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
-}
 
-@media (max-width: 576px) {
-  .auth-form {
-    width: 100%;
-    padding: 25px;
-    max-width: none;
+  .input-with-icon input {
+    padding: 10px 15px;
+    padding-left: 40px; /* Adjust icon space */
+    font-size: 0.9em;
+  }
+
+  .auth-btn {
+    padding: 12px;
+    font-size: 1em;
   }
 }

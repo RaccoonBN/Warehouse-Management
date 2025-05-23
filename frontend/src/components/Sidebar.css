@@ -1,0 +1,152 @@
+/* frontend/src/components/Sidebar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap');
+
+/* Main sidebar styling */
+.sidebar {
+  background: linear-gradient(to bottom, #6a5acd, #845ef7);
+  color: white;
+  width: 60px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 30px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Lexend Deca', sans-serif;
+  transition: width 0.3s ease;
+}
+
+/* Expanded state on hover */
+.sidebar:hover {
+  width: 260px;
+}
+
+/* Sidebar brand/logo */
+.sidebar-brand {
+  padding: 25px;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide brand text by default */
+.sidebar-brand h2 {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show brand text on sidebar hover */
+.sidebar:hover .sidebar-brand h2 {
+  opacity: 1;
+}
+
+/* Sidebar menu list */
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Sidebar menu list items */
+.sidebar-menu li {
+  padding: 18px 25px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for list items */
+.sidebar-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Active item styling */
+.sidebar-menu li.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-menu li.active a .icon {
+  color: white;
+}
+
+/* Style for links within list items */
+.sidebar-menu li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: padding 0.3s ease, opacity 0.3s ease;
+  justify-content: center; /* Center the icon by default */
+}
+
+/* Style the icon - Fixed font-size, always visible */
+.sidebar-menu li a .icon {
+    margin-right: 0px; /* Remove icon margin when collapsed */
+    font-size: 1.3em !important; /* Set this value to lock it’s size */
+    color: #b0c4de;
+    transition: color 0.3s ease, margin-right 0.3s ease;
+    opacity: 1; /* Always visible */
+}
+
+/* Hide them from the start and show them on hover*/
+.sidebar-menu li a span {
+    display: none; /*Make them disapear */
+}
+
+.sidebar:hover .sidebar-menu li a span {
+    display: inline-block;/*Make them apear */
+    margin-left: 12px;
+
+}
+/* Fix to keep the span on the same line */
+.sidebar:hover .sidebar-menu li a {
+    justify-content: flex-start;
+}
+
+/* Tooltip styling (hidden text on hover) */
+.sidebar-menu li a[data-tip]:hover:after {
+  content: attr(data-tip);
+  position: absolute;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  z-index: 10;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar-menu li a[data-tip]:after {
+  display: none;
+}
+
+.sidebar:hover .sidebar-menu li a[data-tip]:hover:after {
+  display: block; /* Show the tooltip on hover */
+}
+
+/* Smaller screen adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px; /* Start collapsed on small screens */
+  }
+
+  .sidebar-brand h2 {
+    display: none; /* Hide brand text */
+  }
+
+  .sidebar-menu li a span {
+    display: none; /* Hide text on small screens */
+  }
+
+  /* Add hover tip and display inline block */
+  .sidebar-menu li a[data-tip]:hover:after {
+    display: block; /* Show the tooltip on hover */
+  }
+}

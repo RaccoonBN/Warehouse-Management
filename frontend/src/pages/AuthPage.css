@@ -5,11 +5,21 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #7986cb 0%, #9fa8da 100%);
+    background: linear-gradient(135deg, #4a90e2 0%, #63b8ff 100%); /* Main page gradient */
     font-family: 'Lexend Deca', sans-serif;
     color: #34495e;
     padding: 20px;
     box-sizing: border-box;
+  }
+  
+  .auth-card {
+    display: flex;
+    background-color: white;
+    border-radius: 20px; /* More rounded overall card */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25); /* Deeper shadow for the whole card */
+    overflow: hidden; /* Important for border-radius to work with content */
+    max-width: 1000px; /* Fixed max-width for the entire card */
+    width: 95%; /* Responsive width */
   }
   
   .auth-illustration {
@@ -17,68 +27,122 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px; /* Padding inside the illustration part */
+    background-color: #fbfbfc; /* Very light background for illustration */
+    min-width: 380px; /* Minimum width for the illustration column */
+    box-sizing: border-box;
   }
   
   .auth-illustration img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
+    display: block; /* Remove extra space below image */
   }
   
   .auth-content {
-    max-width: 450px;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    flex: 1;
+    padding: 50px; /* Generous padding for content */
+    background-color: white; /* Clean white background for the content part */
     text-align: center;
+    box-sizing: border-box;
+    min-width: 380px; /* Minimum width for the content column */
   }
   
   .auth-content h1 {
-    font-size: 2.5em;
+    font-size: 2.5em; /* Main title */
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #34495e;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
   
-  .auth-content p {
+  .auth-content .auth-subtitle { /* Subtitle for the page */
     font-size: 1.1em;
     margin-bottom: 30px;
     color: #777;
+    line-height: 1.6;
   }
   
-  .auth-content .toggle-form {
+  /* Toggle button styling */
+  .toggle-form-text {
     text-align: center;
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #777;
+    margin-top: 25px; /* Spacing after AuthForm */
+    font-size: 0.95em;
+    color: #666;
   }
   
-  .auth-content .toggle-form button {
+  .toggle-form-text .toggle-btn {
     background: none;
     border: none;
     color: #4a90e2;
     cursor: pointer;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: 600; /* Bolder for prominence */
+    transition: color 0.2s ease;
   }
   
-  .auth-content .toggle-form button:hover {
+  .toggle-form-text .toggle-btn:hover {
     color: #63b8ff;
   }
   
   /* Responsive adjustments */
-  @media (max-width: 576px) {
+  @media (max-width: 992px) { /* Adjust for smaller desktops/large tablets */
+    .auth-card {
+      max-width: 800px;
+      flex-direction: column; /* Stack illustration and content */
+    }
+  
+    .auth-illustration {
+      min-width: auto; /* Allow illustration to shrink */
+      max-width: 100%; /* Take full width when stacked */
+      padding: 20px;
+      order: 1; /* Illustration first */
+    }
+  
+    .auth-content {
+      min-width: auto; /* Allow content to shrink */
+      max-width: 100%; /* Take full width when stacked */
+      padding: 40px;
+      order: 2; /* Content second */
+    }
+  
+    .auth-illustration img {
+      max-width: 80%; /* Reduce illustration size when stacked */
+    }
+  
+    .auth-content h1 {
+      font-size: 2.2em;
+    }
+  
+    .auth-content .auth-subtitle {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 576px) { /* Mobile specific adjustments */
+    .auth-card {
+      width: 100%;
+      border-radius: 0; /* No border-radius on very small screens */
+      box-shadow: none; /* No shadow on very small screens */
+    }
+  
+    .auth-illustration {
+      padding: 15px;
+    }
+  
+    .auth-illustration img {
+      max-width: 90%;
+    }
+  
     .auth-content {
       padding: 30px;
     }
   
     .auth-content h1 {
-      font-size: 2em;
+      font-size: 1.8em;
     }
   
-    .auth-content p {
-      font-size: 1em;
+    .auth-content .auth-subtitle {
+      font-size: 0.9em;
+      margin-bottom: 20px;
     }
   }

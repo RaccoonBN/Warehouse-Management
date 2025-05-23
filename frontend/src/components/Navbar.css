@@ -1,0 +1,114 @@
+/* frontend/src/components/Navbar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap');
+
+/* Main navbar styling */
+.navbar {
+  background: linear-gradient(to right, #6a5acd, #845ef7); /* Gradient background */
+  color: white; /* White text for contrast */
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.3); /* Subtle shadow matching gradient */
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+/* Brand/logo styling */
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.8em; /* Larger font size for the brand */
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Navbar links container */
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Welcome message */
+.navbar-links .welcome-message {
+  margin-right: 25px;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  display: flex; /* Use flex to align items */
+  align-items: center; /* Vertically center the icon and text */
+}
+
+/* User icon within welcome message */
+.navbar-links .welcome-message .user-icon {
+  margin-right: 8px; /* Add some space between the icon and text */
+  font-size: 1.2em; /* Increase icon size */
+  color: #c0c0c0; /* Light gray color for subtle contrast */
+}
+
+/* Logout button */
+.navbar-links .logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 20px;
+  border-radius: 6px; /* Slightly rounded button */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.3); /* Button shadow */
+  display: flex;
+  align-items: center;
+}
+
+/* Logout icon style */
+.navbar-links .logout-btn .logout-icon {
+  margin-right: 8px; /* Add space between text and icon */
+}
+
+.navbar-links .logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly darker background on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Login link (if not logged in) */
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Login icon style */
+.navbar-links a .login-icon {
+  margin-right: 8px; /* Add space between text and icon */
+}
+
+.navbar-links a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .navbar-brand a {
+    font-size: 1.3em;
+  }
+
+  .navbar-links span,
+  .navbar-links button,
+  .navbar-links a {
+    font-size: 1em;
+  }
+}
